@@ -1,0 +1,6 @@
+@DesafioDoTroco_HostAddress = http://localhost:5169
+
+GET {{DesafioDoTroco_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

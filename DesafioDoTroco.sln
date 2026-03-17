@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36623.8
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioDoTroco.API", "DesafioDoTroco\DesafioDoTroco.API.csproj", "{5EBD769E-EFF8-4C74-A0BD-C0318EB3DBC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioDoTroco.Core", "DesafioDoTroco.Core\DesafioDoTroco.Core.csproj", "{A82528CB-2CBB-44DB-AB94-07586872B527}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioDoTroco.Infrastructure", "DesafioDoTroco.Infrastructure\DesafioDoTroco.Infrastructure.csproj", "{7755DAD9-5CBA-4874-8158-9DC97DD564AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioDoTroco.Application", "DesafioDoTroco.Application\DesafioDoTroco.Application.csproj", "{C4944E56-45F2-4A05-97C8-3E0667015D92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioDoTroco.Tests", "DesafioDoTroco.Tests\DesafioDoTroco.Tests.csproj", "{C026B9D7-A124-435A-8DD7-F90E344EF42A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens de Solução", "{380A7511-A354-6D7A-0CC0-8FA1F1BA7B6C}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5EBD769E-EFF8-4C74-A0BD-C0318EB3DBC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EBD769E-EFF8-4C74-A0BD-C0318EB3DBC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EBD769E-EFF8-4C74-A0BD-C0318EB3DBC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EBD769E-EFF8-4C74-A0BD-C0318EB3DBC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A82528CB-2CBB-44DB-AB94-07586872B527}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A82528CB-2CBB-44DB-AB94-07586872B527}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A82528CB-2CBB-44DB-AB94-07586872B527}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A82528CB-2CBB-44DB-AB94-07586872B527}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7755DAD9-5CBA-4874-8158-9DC97DD564AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7755DAD9-5CBA-4874-8158-9DC97DD564AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7755DAD9-5CBA-4874-8158-9DC97DD564AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7755DAD9-5CBA-4874-8158-9DC97DD564AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4944E56-45F2-4A05-97C8-3E0667015D92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4944E56-45F2-4A05-97C8-3E0667015D92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4944E56-45F2-4A05-97C8-3E0667015D92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4944E56-45F2-4A05-97C8-3E0667015D92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C026B9D7-A124-435A-8DD7-F90E344EF42A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C026B9D7-A124-435A-8DD7-F90E344EF42A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C026B9D7-A124-435A-8DD7-F90E344EF42A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C026B9D7-A124-435A-8DD7-F90E344EF42A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3AEB7D7E-9161-4138-A25C-EB51C2931BBF}
+	EndGlobalSection
+EndGlobal
