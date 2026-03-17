@@ -18,17 +18,17 @@ namespace DesafioDoTroco.Infrastructure.Persistence
             Money = new List<Money>
             {
                 // Cédulas
-                new Money { Aticve = true, Value = 100m, TypeMoney = TypeMoneyEnum.Cedula },
-                new Money { Aticve = true, Value = 50m, TypeMoney = TypeMoneyEnum.Cedula },
-                new Money { Aticve = true, Value = 10m, TypeMoney = TypeMoneyEnum.Cedula },
-                new Money { Aticve = true, Value = 5m, TypeMoney = TypeMoneyEnum.Cedula },
-                new Money { Aticve = true, Value = 1m, TypeMoney = TypeMoneyEnum.Cedula },
+                new MoneyPaper(100m),
+                new MoneyPaper(50m),
+                new MoneyPaper(10m),
+                new MoneyPaper(5m),
+                new MoneyPaper(1m),
 
                 // Moedas
-                new Money { Aticve = true, Value = 0.50m, TypeMoney = TypeMoneyEnum.Moeda },
-                new Money { Aticve = true, Value = 0.10m, TypeMoney = TypeMoneyEnum.Moeda },
-                new Money { Aticve = true, Value = 0.05m, TypeMoney = TypeMoneyEnum.Moeda },
-                new Money { Aticve = true, Value = 0.01m, TypeMoney = TypeMoneyEnum.Moeda }
+                new MoneyCoin(0.50m),
+                new MoneyCoin(0.10m),
+                new MoneyCoin(0.05m),
+                new MoneyCoin(0.01m)
             };
         }
 

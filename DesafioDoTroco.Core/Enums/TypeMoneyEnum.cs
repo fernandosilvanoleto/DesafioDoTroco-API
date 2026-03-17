@@ -13,7 +13,7 @@ namespace DesafioDoTroco.Core.Enums
         [Description("Cédula(s)")]
         Cedula = 0,
 
-        [Description("Moedas")]
+        [Description("Moeda(s)")]
         Moeda = 1
     }
 }

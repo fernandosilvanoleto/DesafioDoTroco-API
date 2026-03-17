@@ -27,6 +27,13 @@ namespace DesafioDoTroco.Application.Services.Implementations.Sales
         {
             Debug.WriteLine($"[SalesService][CalculateChange] Iniciar pagamento em dinheiro. Total: {calculateChange.PurchaseAmount}, Pago: {calculateChange.AmountPaid}, Cliente: {calculateChange.CustomerName}");
 
+            if (calculateChange.PurchaseAmount <= 0 || calculateChange.AmountPaid <= 0)
+            {
+                throw new ArgumentException("Os valores de Valor da Compra e Valor Pago devem ser maiores que zero.");
+            }
+
+            Debug.WriteLine($"[SalesService][CalculateChange] Iniciar pagamento em dinheiro. Total: {calculateChange.PurchaseAmount}, Pago: {calculateChange.AmountPaid}, Cliente: {calculateChange.CustomerName}");
+           
             if (_cashManager.IsPaymentInsufficient(calculateChange.PurchaseAmount, calculateChange.AmountPaid))
             {
                 Debug.WriteLine($"[SalesService][CalculateChange] Pagamento insuficiente.");
@@ -43,7 +50,7 @@ namespace DesafioDoTroco.Application.Services.Implementations.Sales
 
                 return new CalculateChangeClientViewModel(
                     calculateChange,
-                    "Valor pago exatamente igual ao valor da compra"
+                    "Valor pago exatamente igual ao valor da compra."
                 );
             }
 
@@ -66,7 +73,7 @@ namespace DesafioDoTroco.Application.Services.Implementations.Sales
         /// </summary>
         /// <param name="amountPaid">Valor pago pelo cliente.</param>
         /// <returns>Listar as cédulas e moedas menor do que o valor pago.</returns>
-        private List<Money> ConsultMoneyAvailable(decimal amountPaid)
+        public virtual List<Money> ConsultMoneyAvailable(decimal amountPaid)
         {
             // listar dinheiro (cédulas e moedas) do banco
             List<Money> moneys = _dbContext.Money

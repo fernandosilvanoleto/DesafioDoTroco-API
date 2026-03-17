@@ -13,17 +13,30 @@ namespace DesafioDoTroco.Controllers
             _salesServices = salesService;
         }
 
+
         [HttpPost("calculateChange")]
         public IActionResult CalculateChange([FromBody] CalculateChangeInputModel calcularTrocoModel)
         {
-            var returnChange = _salesServices.CalculateChange(calcularTrocoModel);
-
-            if (returnChange == null)
+            if (calcularTrocoModel == null)
             {
-                return NotFound();
+                return BadRequest("Dados inválidos. Revise os dados enviados.");
             }
 
-            return Ok(returnChange);
+            try
+            {
+                var result = _salesServices.CalculateChange(calcularTrocoModel);
+
+                if (result == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(result);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
         }
     }
 }

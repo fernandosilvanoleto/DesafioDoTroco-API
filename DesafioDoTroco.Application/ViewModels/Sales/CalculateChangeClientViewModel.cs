@@ -14,10 +14,11 @@ namespace DesafioDoTroco.Application.ViewModels.Sales
     {
         public CalculateChangeClientViewModel(CalculateChangeInputModel input, string statusPayment)
         {
-            StatusPayment = statusPayment;
-            CustomerName = input.CustomerName;
-            PurchaseAmount = input.PurchaseAmount;
-            AmountPaid = input.AmountPaid;
+            this.StatusPayment = statusPayment;
+            this.CustomerName = input.CustomerName;
+            this.PurchaseAmount = input.PurchaseAmount;
+            this.AmountPaid = input.AmountPaid;
+            this.ChangeAmount = (input.AmountPaid - input.PurchaseAmount);
         }
 
         public CalculateChangeClientViewModel(CalculateChangeInputModel input, string statusPayment, decimal changeAmount, List<ResultMoneyChange> changeMoneyItems)

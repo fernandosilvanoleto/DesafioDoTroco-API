@@ -1,5 +1,6 @@
 ﻿using DesafioDoTroco.Core.Entities;
 using DesafioDoTroco.Core.Enums;
+using DesafioDoTroco.Core.Payments.Interfaces;
 using DesafioDoTroco.Core.ValueObjects.Sales;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DesafioDoTroco.Core.Payments.Cash
 {
-    public class ChangeCalculator
+    public class ChangeCalculator : ICash
     {
 
         /// <summary>
@@ -23,6 +24,10 @@ namespace DesafioDoTroco.Core.Payments.Cash
         public List<ResultMoneyChange> CalculateChangeAmount(decimal purchaseAmount, decimal amountPaid, List<Money> moneyAvailable)
         {
             List<ResultMoneyChange> resultMoney = new List<ResultMoneyChange>();
+
+            moneyAvailable = moneyAvailable
+                .Where(m => m.Value <= amountPaid && m.Aticve == true)
+                .ToList();
 
             decimal changeAmount = amountPaid - purchaseAmount;
 

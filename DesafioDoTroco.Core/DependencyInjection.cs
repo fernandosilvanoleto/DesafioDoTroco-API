@@ -1,4 +1,5 @@
 ﻿using DesafioDoTroco.Core.Payments.Cash;
+using DesafioDoTroco.Core.Payments.Interfaces;
 using DesafioDoTroco.Core.Services.Implementations.Sales;
 using DesafioDoTroco.Core.Services.Interfaces.Sales;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,7 +17,7 @@ namespace DesafioDoTroco.Core
         {
             // Dependências Externas do "<ISalesService, SalesService>"
             // toda dependência do construtor precisa estar registrada no container.
-            services.AddScoped<ChangeCalculator>();
+            services.AddScoped<ICash, ChangeCalculator>();
             services.AddScoped<ICashManager, CashManager>();
 
             return services;

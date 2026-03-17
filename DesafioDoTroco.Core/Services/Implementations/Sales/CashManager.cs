@@ -1,5 +1,6 @@
 ﻿using DesafioDoTroco.Core.Entities;
 using DesafioDoTroco.Core.Payments.Cash;
+using DesafioDoTroco.Core.Payments.Interfaces;
 using DesafioDoTroco.Core.Services.Interfaces.Sales;
 using DesafioDoTroco.Core.ValueObjects.Sales;
 using System;
@@ -12,12 +13,12 @@ namespace DesafioDoTroco.Core.Services.Implementations.Sales
 {
     public class CashManager : ICashManager
     {
-        // Como usa injenção de dependência
-        private readonly ChangeCalculator _changeCalculator;
+        // usar recursos extras
+        private readonly ICash _cash;
 
-        public CashManager(ChangeCalculator changeCalculator)
+        public CashManager(ICash cash)
         {
-            _changeCalculator = changeCalculator;
+            _cash = cash;
         }
 
         // Se o valor de recebimento for menor do que o total a ser pago, retornar ao cliente que está faltando dinheiro
@@ -40,7 +41,7 @@ namespace DesafioDoTroco.Core.Services.Implementations.Sales
         /// <returns>Retornar uma lista contendo as cédulas e moedas utilizadas no troco.</returns>
         public List<ResultMoneyChange> CalculateChangeMoney(decimal purchaseAmount, decimal amountPaid, List<Money> moneyAvailable)
         {
-            List<ResultMoneyChange> resultMoneyChanges = _changeCalculator.CalculateChangeAmount(purchaseAmount, amountPaid, moneyAvailable);
+            List<ResultMoneyChange> resultMoneyChanges = _cash.CalculateChangeAmount(purchaseAmount, amountPaid, moneyAvailable);
 
             return resultMoneyChanges;
         }

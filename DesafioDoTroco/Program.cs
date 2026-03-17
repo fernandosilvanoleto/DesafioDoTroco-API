@@ -14,12 +14,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Padrão de Projeto
 builder.Services.AddSingleton<DesafioDoTrocoDbContext>();
 
 // Adicionar as dependências das Camadas
+// Cada Biblioteca é responsável por adicionar as dependências internas
 builder.Services.AddDependencysCore()
                 .AddDependencysApplication();
 
+// liberar acesso ao projeto do React
+// verificar o link externo do React e alterar aqui, caso necessário
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("ReactPolicy",
