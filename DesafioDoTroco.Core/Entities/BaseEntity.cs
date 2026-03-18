@@ -13,6 +13,6 @@ namespace DesafioDoTroco.Core.Entities
             Id = Guid.NewGuid();
         }
         public Guid Id { get; set; }
-        public bool Aticve { get; set; } = false;
+        public bool Active { get; set; } = false;
     }
 }

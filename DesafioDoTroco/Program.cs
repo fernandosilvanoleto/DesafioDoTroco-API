@@ -3,6 +3,9 @@ using DesafioDoTroco.Application.Services.Implementations.Sales;
 using DesafioDoTroco.Application.Services.Interfaces;
 using DesafioDoTroco.Core;
 using DesafioDoTroco.Core.Payments.Cash;
+using DesafioDoTroco.Core.Payments.Interfaces;
+using DesafioDoTroco.Core.Services.Implementations.Sales;
+using DesafioDoTroco.Core.Services.Interfaces.Sales;
 using DesafioDoTroco.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,8 +22,11 @@ builder.Services.AddSingleton<DesafioDoTrocoDbContext>();
 
 // Adicionar as dependências das Camadas
 // Cada Biblioteca é responsável por adicionar as dependências internas
-builder.Services.AddDependencysCore()
-                .AddDependencysApplication();
+builder.Services.AddDependencysApplication();
+
+// Camada Core
+builder.Services.AddScoped<ICash, ChangeCalculator>();
+builder.Services.AddScoped<ICashManager, CashManager>();
 
 // liberar acesso ao projeto do React
 // verificar o link externo do React e alterar aqui, caso necessário

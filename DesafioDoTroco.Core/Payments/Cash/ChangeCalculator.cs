@@ -26,7 +26,7 @@ namespace DesafioDoTroco.Core.Payments.Cash
             List<ResultMoneyChange> resultMoney = new List<ResultMoneyChange>();
 
             moneyAvailable = moneyAvailable
-                .Where(m => m.Value <= amountPaid && m.Aticve == true)
+                .Where(m => m.Value <= amountPaid && m.Active == true)
                 .ToList();
 
             decimal changeAmount = amountPaid - purchaseAmount;

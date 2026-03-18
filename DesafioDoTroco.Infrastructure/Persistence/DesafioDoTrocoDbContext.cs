@@ -1,5 +1,6 @@
 ﻿using DesafioDoTroco.Core.Entities;
 using DesafioDoTroco.Core.Enums;
+using DesafioDoTroco.Core.Factories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,17 +19,20 @@ namespace DesafioDoTroco.Infrastructure.Persistence
             Money = new List<Money>
             {
                 // Cédulas
-                new MoneyPaper(100m),
-                new MoneyPaper(50m),
-                new MoneyPaper(10m),
-                new MoneyPaper(5m),
-                new MoneyPaper(1m),
+                MoneyFactory.Create(100m),
+                MoneyFactory.Create(50m),
+                MoneyFactory.Create(10m),
+                MoneyFactory.Create(5m),
+                MoneyFactory.Create(1m),
 
                 // Moedas
-                new MoneyCoin(0.50m),
-                new MoneyCoin(0.10m),
-                new MoneyCoin(0.05m),
-                new MoneyCoin(0.01m)
+                MoneyFactory.Create(0.50m),
+                MoneyFactory.Create(0.10m),
+                MoneyFactory.Create(0.05m),
+                MoneyFactory.Create(0.01m),
+
+                // Clonar moeda de 100 e criar uma de 200
+                MoneyFactory.CreateFromPrototype(MoneyFactory.Create(100m), 200m),
             };
         }
 

@@ -32,11 +32,9 @@ namespace DesafioDoTroco.Application.Services.Implementations.Sales
                 throw new ArgumentException("Os valores de Valor da Compra e Valor Pago devem ser maiores que zero.");
             }
 
-            Debug.WriteLine($"[SalesService][CalculateChange] Iniciar pagamento em dinheiro. Total: {calculateChange.PurchaseAmount}, Pago: {calculateChange.AmountPaid}, Cliente: {calculateChange.CustomerName}");
-           
             if (_cashManager.IsPaymentInsufficient(calculateChange.PurchaseAmount, calculateChange.AmountPaid))
             {
-                Debug.WriteLine($"[SalesService][CalculateChange] Pagamento insuficiente.");
+                Debug.WriteLine($"[SalesService][CalculateChange] Finalizar com pagamento insuficiente.");
 
                 return new CalculateChangeClientViewModel(
                     calculateChange,
@@ -46,7 +44,7 @@ namespace DesafioDoTroco.Application.Services.Implementations.Sales
 
             if (_cashManager.IsPaymentEqualToTotal(calculateChange.PurchaseAmount, calculateChange.AmountPaid))
             {
-                Debug.WriteLine("[SalesService][CalculateChange] Pagamento exato");
+                Debug.WriteLine("[SalesService][CalculateChange] Finalizar com pagamento exato.");
 
                 return new CalculateChangeClientViewModel(
                     calculateChange,
@@ -54,11 +52,15 @@ namespace DesafioDoTroco.Application.Services.Implementations.Sales
                 );
             }
 
+            Debug.WriteLine($"[SalesService][CalculateChange] Iniciar as tratativas de cálculo do troco");
+
             List<Money> availableBankMoney = ConsultMoneyAvailable(calculateChange.AmountPaid);
 
             List<ResultMoneyChange> resultMoney = _cashManager.CalculateChangeMoney(calculateChange.PurchaseAmount, calculateChange.AmountPaid, availableBankMoney);
 
             var changeValue = calculateChange.AmountPaid - calculateChange.PurchaseAmount;
+
+            Debug.WriteLine($"[SalesService][CalculateChange] Fim do pagamento em dinheiro. Devolução do troco");
 
             return new CalculateChangeClientViewModel(
                 calculateChange,
@@ -77,7 +79,7 @@ namespace DesafioDoTroco.Application.Services.Implementations.Sales
         {
             // listar dinheiro (cédulas e moedas) do banco
             List<Money> moneys = _dbContext.Money
-                .Where(m => m.Value <= amountPaid && m.Aticve == true)
+                .Where(m => m.Value <= amountPaid && m.Active == true)
                 .ToList();
 
             return moneys;

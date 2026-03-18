@@ -1,4 +1,5 @@
 ﻿using DesafioDoTroco.Core.Entities;
+using DesafioDoTroco.Core.Factories;
 using DesafioDoTroco.Core.Payments.Interfaces;
 using DesafioDoTroco.Core.Services.Implementations.Sales;
 using DesafioDoTroco.Core.ValueObjects.Sales;
@@ -30,13 +31,14 @@ public class SalesDomainTests
         Assert.True(resultado);
     }
 
+    
     [Fact]
     public void CashManager_CalculateChangeMoney_DeveChamarCashERetornarResultado()
     {
         // Arrange
         var moneyList = new List<Money>
         {
-            new MoneyPaper(10m)
+            MoneyFactory.Create(10m)
         };
 
         var retornoEsperado = new List<ResultMoneyChange>
@@ -67,4 +69,5 @@ public class SalesDomainTests
         Assert.Equal(10m, resultado[0].Value);
         Assert.Equal("Cédula(s)", resultado[0].TypeMoney);
     }
+    
 }

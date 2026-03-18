@@ -2,6 +2,7 @@
 using DesafioDoTroco.Application.Services.Implementations.Sales;
 using DesafioDoTroco.Application.ViewModels.Sales;
 using DesafioDoTroco.Core.Entities;
+using DesafioDoTroco.Core.Factories;
 using DesafioDoTroco.Core.Services.Interfaces.Sales;
 using DesafioDoTroco.Core.ValueObjects.Sales;
 using DesafioDoTroco.Infrastructure.Persistence;
@@ -117,7 +118,7 @@ namespace DesafioDoTroco.Tests.Application.Services
             Assert.NotNull(resultado);
             Assert.Empty(resultado.ChangeMoneyItems);
         }
-
+        
         [Fact]
         public void CalculateChange_PagamentoValido_RetornarTrocoCorreto()
         {
@@ -131,14 +132,16 @@ namespace DesafioDoTroco.Tests.Application.Services
 
             var moneyFake = new List<Money>
             {
-                new MoneyPaper(50m),
-                new MoneyPaper(10m),
-                new MoneyPaper(5m),
-                new MoneyPaper(1m),
-                new MoneyCoin(0.50m),
-                new MoneyCoin(0.10m),
-                new MoneyCoin(0.05m),
-                new MoneyCoin(0.01m)
+                MoneyFactory.Create(100m),
+                MoneyFactory.Create(50m),
+                MoneyFactory.Create(10m),
+                MoneyFactory.Create(5m),
+                MoneyFactory.Create(1m),
+
+                MoneyFactory.Create(0.50m),
+                MoneyFactory.Create(0.10m),
+                MoneyFactory.Create(0.05m),
+                MoneyFactory.Create(0.01m)
             };
 
             var dbContextMock = new Mock<DesafioDoTrocoDbContext>();
@@ -160,7 +163,7 @@ namespace DesafioDoTroco.Tests.Application.Services
                     }
                 });
 
-            // 🔥 Mockando o próprio Service
+            // Mockando o próprio Service
             var serviceMock = new Mock<SalesService>(
                     dbContextMock.Object,
                     cashManagerMock.Object
@@ -186,6 +189,6 @@ namespace DesafioDoTroco.Tests.Application.Services
             Assert.Equal(10m, item.Value);
             Assert.Equal("Cédula(s)", item.TypeMoney);
         }
-
+        
     }
 }

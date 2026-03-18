@@ -12,7 +12,7 @@ namespace DesafioDoTroco.Core.Entities
         {
             ValorCompra = valorCompra;
             ValorPago = valorPago;
-            Aticve = true;
+            Active = true;
             CreatedAt = DateTime.Now;
         }
 
